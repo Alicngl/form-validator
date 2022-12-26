@@ -22,7 +22,6 @@ function checkedRequired(inputs) {
     }
   });
 }
-console.log(form);
 
 function checkLength(input, min, max) {
   if (input.value.length < min) {
