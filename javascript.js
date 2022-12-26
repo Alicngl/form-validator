@@ -23,8 +23,24 @@ function checkedRequired(inputs) {
   });
 }
 
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    error(input, `En az ${min} karakter olmalıdır`);
+  } else if (input.value.length > max) {
+    error(input, `En fazla ${max} karakter olmalıdır`);
+  } else {
+    success(input);
+  }
+}
+function checkPassword(input1, input2) {
+  if (input1 !== input2) {
+    error(input2, "Parolalar eşleşmiyor");
+  }
+}
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
   checkedRequired([user, email, password, repassword]);
+  checkLength(password, 7, 15);
+  checkLength(user, 4, 8);
 });
